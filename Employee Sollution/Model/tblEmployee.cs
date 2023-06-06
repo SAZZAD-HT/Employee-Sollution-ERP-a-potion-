@@ -14,7 +14,7 @@ namespace Employee_Sollution.Model
 
         [Required]
         [MaxLength(10)]
-        [Index(IsUnique = true)]
+       
         public string EmployeeCode { get; set; }
 
         public decimal EmployeeSalary { get; set; }
