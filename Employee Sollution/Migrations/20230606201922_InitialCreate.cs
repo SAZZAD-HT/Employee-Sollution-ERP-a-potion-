@@ -32,9 +32,9 @@ namespace Employee_Sollution.Migrations
                 {
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     AttendanceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsPresent = table.Column<bool>(type: "bit", nullable: false),
-                    IsAbsent = table.Column<bool>(type: "bit", nullable: false),
-                    IsOffday = table.Column<bool>(type: "bit", nullable: false)
+                    IsPresent = table.Column<int>(type: "int", nullable: false),
+                    IsAbsent = table.Column<int>(type: "int", nullable: false),
+                    IsOffday = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

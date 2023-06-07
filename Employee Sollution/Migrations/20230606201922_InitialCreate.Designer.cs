@@ -4,6 +4,7 @@ using Employee_Sollution.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Employee_Sollution.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [Migration("20230606201922_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,29 +24,6 @@ namespace Employee_Sollution.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Employee_Sollution.Model.MonthlyReport", b =>
-                {
-                    b.Property<string>("EmployeeName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("MonthName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalAbsent")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalOffday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalPresent")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmployeeName");
-
-                    b.ToTable("Report");
-                });
 
             modelBuilder.Entity("Employee_Sollution.Model.tblEmployee", b =>
                 {

@@ -11,6 +11,7 @@ namespace Employee_Sollution.Model
         }
         public DbSet<tblEmployee> Employees { get; set; }
         public DbSet<tblEmployeeAttendance> EmployeeAttendances { get; set; }
+        public DbSet<MonthlyReport> Report { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<tblEmployee>()

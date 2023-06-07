@@ -14,11 +14,11 @@ namespace Employee_Sollution.Model
         [Column(Order = 2)]
         public DateTime AttendanceDate { get; set; }
 
-        public bool IsPresent { get; set; }
+        public int IsPresent { get; set; }
 
-        public bool IsAbsent { get; set; }
+        public int IsAbsent { get; set; }
 
-        public bool IsOffday { get; set; }
+        public int IsOffday { get; set; }
 
         public tblEmployee Employee { get; set; }
     }

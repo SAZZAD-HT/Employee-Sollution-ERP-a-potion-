@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Employee_Sollution.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20230606190906_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230606202841_InitialCreate2")]
+    partial class InitialCreate2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,29 @@ namespace Employee_Sollution.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Employee_Sollution.Model.MonthlyReport", b =>
+                {
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MonthName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalAbsent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalOffday")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalPresent")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmployeeName");
+
+                    b.ToTable("Report");
+                });
 
             modelBuilder.Entity("Employee_Sollution.Model.tblEmployee", b =>
                 {
@@ -63,14 +86,14 @@ namespace Employee_Sollution.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnOrder(2);
 
-                    b.Property<bool>("IsAbsent")
-                        .HasColumnType("bit");
+                    b.Property<int>("IsAbsent")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("IsOffday")
-                        .HasColumnType("bit");
+                    b.Property<int>("IsOffday")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("IsPresent")
-                        .HasColumnType("bit");
+                    b.Property<int>("IsPresent")
+                        .HasColumnType("int");
 
                     b.HasKey("EmployeeId", "AttendanceDate");
 
