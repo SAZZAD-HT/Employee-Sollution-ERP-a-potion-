@@ -12,6 +12,7 @@ namespace Employee_Sollution.Controllers
 
 
         private readonly EmployeeContext db;
+ 
 
         public EmployeController(EmployeeContext _db)
         {
@@ -19,14 +20,10 @@ namespace Employee_Sollution.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> EmployeeInfo()
-        {
-           
-            return Ok( await db.Employees.ToListAsync());
-        }
-        [HttpPost("{id}")]
-        public IActionResult UpdateEmployeeCode(int id,  tblEmployee model)
+        //API01# Update an employee’s Employee Code 
+        [HttpPut]
+        [Route("{id:int}")]
+        public IActionResult UpdateEmployeeCode(int id, [FromBody] Updateempcode model)
         {
             var employee = db.Employees.FirstOrDefault(e => e.EmployeeId == id);
             if (employee == null)
@@ -43,6 +40,16 @@ namespace Employee_Sollution.Controllers
 
             return Ok(employee);
         }
+
+        //null
+        //[HttpGet]
+        //public async Task<IActionResult> EmployeeInfo()
+        //{
+           
+        //    return Ok( await db.Employees.ToListAsync());
+        //}
+
+       
 
         // API02: Get all employees based on maximum to minimum salary
         [HttpGet("salary")]
@@ -62,6 +69,7 @@ namespace Employee_Sollution.Controllers
 
             return Ok(employees);
         }
+
 
         // API04: Get monthly attendance report of all employees
         [HttpGet("attendance-report")]
